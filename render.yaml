@@ -1,0 +1,33 @@
+# Render Blueprint Specification for FlowSense AI
+# Documentation: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: flowsense-ai
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        value: sqlite:///./flowsense.db
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: "*"
+
+    # Optional: If you choose the Render Starter plan ($7/mo) to persist SQLite data across rebuilds:
+    # plan: starter
+    # disk:
+    #   name: flowsense-data
+    #   mountPath: /app/data
+    #   sizeGB: 1
+    # envVars:
+    #   - key: DATABASE_URL
+    #     value: sqlite:////app/data/flowsense.db
+    #   - key: MODEL_DIR
+    #     value: /app/data/models
+

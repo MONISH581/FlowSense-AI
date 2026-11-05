@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-deep-green: #01110A;
+  --color-bg-white: #FAFDFC;
+  --color-dark-green: #3B4A34;
+  --color-muted-green: #99AFA9;
+  --color-mint: #ADEBD9;
+  --color-light-green: #A0F89C;
+  --color-forest-surface: #031B10;
+  --color-forest-card: #082819;
+}
+
+@layer base {
+  :root {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: #FAFDFC;
+    color: #01110A;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    selection-background-color: #A0F89C;
+    selection-color: #01110A;
+  }
+
+  ::selection {
+    background-color: #A0F89C;
+    color: #01110A;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f7f4;
+}
+::-webkit-scrollbar-thumb {
+  background: #99AFA9;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3B4A34;
+}
+
+/* Pulsing badge animation */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.03); }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 2.5s infinite ease-in-out;
+}
+
+/* Glow effects */
+.glow-mint {
+  box-shadow: 0 0 24px -4px rgba(173, 235, 217, 0.45);
+}
+
+.glow-light-green {
+  box-shadow: 0 0 24px -4px rgba(160, 248, 156, 0.4);
+}
+
+.glow-deep-green {
+  box-shadow: 0 10px 30px -10px rgba(1, 17, 10, 0.35);
+}
